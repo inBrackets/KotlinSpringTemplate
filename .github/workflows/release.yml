@@ -13,6 +13,22 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
 
+    services:
+      mariadb:
+        image: mariadb:10.5
+        ports:
+          - 3306:3306
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: testdb
+          MARIADB_USER: testuser
+          MARIADB_PASSWORD: testpass
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
       # Checkout the repository
       - name: Checkout repository
@@ -40,6 +56,13 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: Wait for MariaDB to be ready
+        run: |
+          until mysqladmin ping -h 127.0.0.1 -u testuser -ptestpass --silent; do
+            echo "Waiting for MariaDB..."
+            sleep 5
+          done
 
       # Build the Java project with Maven
       - name: Build with Maven
