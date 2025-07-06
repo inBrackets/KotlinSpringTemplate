@@ -16,7 +16,7 @@ jobs:
   build:
     env:
       REPO_NAME: ${{ github.event.repository.name }}
-      TAG_NAME: ${{ github.ref_name }}
+      TAG_NAME: ${{ github.event.inputs.tag }}
     permissions: write-all
     runs-on: ubuntu-latest
 
@@ -82,8 +82,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.event.inputs.tag }}
-          release_name: Release ${{ github.event.inputs.tag }}
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: Release ${{ env.TAG_NAME }}
           draft: false
           prerelease: true
 
