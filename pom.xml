@@ -75,6 +75,10 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -111,7 +115,7 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <configuration>
-                    <url>jdbc:mysql://localhost:3306/mysqltutorialorg_db?createDatabaseIfNotExist=true</url>
+                    <url>jdbc:marıadb://localhost:3306/classicmodels?createDatabaseIfNotExist=true</url>
                     <user>root</user>
                     <password>root</password>
                     <!-- activates plugin flyway:clean which cleans the schemas -->
