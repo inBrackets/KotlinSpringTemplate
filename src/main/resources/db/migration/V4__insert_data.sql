@@ -1,3 +1,6 @@
+/* Switch to the classicmodels database */
+USE classicmodels;
+
 /* Inserting data  */
 insert into productlines(product_line, text_description, html_description, image)
 values ('Classic Cars',

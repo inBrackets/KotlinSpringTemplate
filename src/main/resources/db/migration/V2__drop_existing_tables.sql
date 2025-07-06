@@ -1,3 +1,6 @@
+/* Switch to the classicmodels database */
+USE classicmodels;
+
 /* Drop existing tables  */
 DROP TABLE IF EXISTS productlines;
 DROP TABLE IF EXISTS products;

@@ -1,3 +1,6 @@
+/* Switch to the classicmodels database */
+USE classicmodels;
+
 /* Create the tables */
 CREATE TABLE productlines (
                               product_line varchar(50),
