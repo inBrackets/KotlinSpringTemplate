@@ -32,24 +32,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Set up Node.js for the frontend build
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      # Navigate to the frontend directory and install npm dependencies
-      - name: Install npm dependencies
-        working-directory: src/main/frontend
-        run: npm install
-
-      # Build the React app
-      - name: Build React App
-        working-directory: src/main/frontend
-        run: npm run build
-        env:
-          CI: true
-
       # Cache Maven dependencies to speed up subsequent builds
       - name: Cache Maven packages
         uses: actions/cache@v3
@@ -61,7 +43,7 @@ jobs:
 
       # Build the Java project with Maven
       - name: Build with Maven
-        run: mvn clean package -e
+        run: mvn clean package -Pwith-angular -e
 
       # Create GitHub release for the tag and upload the JAR
       - name: Create GitHub Release
