@@ -75,9 +75,7 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
-
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -123,7 +121,6 @@
             </plugin>
         </plugins>
     </build>
-
     <profiles>
         <profile>
             <id>with-angular</id>
@@ -154,7 +151,6 @@
                                     <arguments>install</arguments>
                                 </configuration>
                             </execution>
-
                             <execution>
                                 <id>npm build our Angular application ...</id>
                                 <goals>
@@ -170,14 +166,15 @@
                             <workingDirectory>src/main/angular</workingDirectory>
                         </configuration>
                     </plugin>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
                         <version>3.3.1</version>
                         <executions>
                             <execution>
-                                <id>Copy my static frontend to the static folder of my spring applications target folder</id>
+                                <id>Copy my static frontend to the static folder of my spring applications target
+                                    folder
+                                </id>
                                 <phase>process-resources</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
@@ -193,11 +190,9 @@
                                 </configuration>
                             </execution>
                         </executions>
-
                     </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
-
 </project>
