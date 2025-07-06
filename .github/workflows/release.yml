@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Some description for version'
+        description: 'Tag under which the release would be published'
         required: true
         default: 'v0.0.1'
 
@@ -94,6 +94,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: target/OgniskoMuzyczne-1.0.0-SNAPSHOT.jar
+          asset_path: target/KotlinSpringTemplate-1.0.0-SNAPSHOT.jar
           asset_name: ${{ env.REPO_NAME }}-${{ env.TAG_NAME }}.jar
           asset_content_type: application/java-archive
