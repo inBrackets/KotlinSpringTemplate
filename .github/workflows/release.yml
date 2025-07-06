@@ -5,6 +5,13 @@ on:
     tags:
       - 'v*'
 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Some description for version'
+        required: true
+        default: 'v0.0.1'
+
 jobs:
   build:
     env:
