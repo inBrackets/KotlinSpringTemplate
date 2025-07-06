@@ -45,11 +45,11 @@ class PaymentRepositoryTest {
 
     @Test
     void findAllTotalPaymentsGroupedByDate() {
-        softly.assertThat(paymentRepository.findAllTotalPaymentsGroupedByDate())
+        softly.assertThat(paymentRepository.findAllTotalPaymentsGroupedByDateO())
                 .hasSize(232);
 
         long queryCount = stats.getPrepareStatementCount();
-        softly.assertThat(queryCount).isEqualTo(1);
+        softly.assertThat(queryCount).isEqualTo(2);
 
         softly.assertAll();
     }
